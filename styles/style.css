@@ -30,7 +30,7 @@ nav ul {
 nav ul li a {
   color: #333;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1rem;
   height: 50px;
   display: flex;
   align-items: center;
@@ -75,18 +75,10 @@ header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-height: 50%;
   position: relative;
   width: 100%;
-  height: 90vh;
-}
-header .header_bg_left {
-  background-color: rgb(255, 246, 198);
-  flex: 1 1 200px;
-}
-header .header_bg_right {
-  flex: 2 1 300px;
-  background-color: #eee;
+  justify-content: center;
+  margin: 2rem 0;
 }
 header .header_main {
   z-index: 10;
@@ -97,8 +89,6 @@ header .header_main {
   max-width: 100%;
   top: 50%;
   left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
   min-height: 60%;
   box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.2);
 }
@@ -147,7 +137,7 @@ header .header_main .header_main_right {
   padding: 4rem;
 }
 header .header_main .header_main_right p {
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 2rem;
   letter-spacing: 3px;
   padding: 0.25rem 0;
@@ -201,13 +191,13 @@ main .profile .experience .item .title {
 }
 main .profile .experience .item .title p {
   padding-left: 10px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 main .profile .experience .item .content {
   flex: 10 1 300px;
   padding: 0 1rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   opacity: 0;
   transition: all 1s ease;
   transition-delay: 0.2s;
@@ -628,16 +618,6 @@ main .toTop a i:hover {
 @media screen and (max-width: 600px) {
   * {
     font-size: 1rem;
-  }
-  header .header_main {
-    position: relative;
-    box-shadow: none;
-  }
-  header .header_bg_left {
-    display: none;
-  }
-  header .header_bg_right {
-    display: none;
   }
   main .profile .experience .item .content {
     font-size: 1rem;

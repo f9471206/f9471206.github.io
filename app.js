@@ -13,6 +13,43 @@ document.querySelector("#miniBar").addEventListener("click", (e) => {
   checkNav();
 });
 
+nav_links.forEach((nav_link) => {
+  nav_link.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target.innerText == "Home") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+    if (e.target.innerText == "About") {
+      document
+        .querySelector("#about")
+        .scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    if (e.target.innerText == "Experience") {
+      document
+        .querySelector("#experience")
+        .scrollIntoView({ behavior: "smooth", top: 0 });
+    }
+    if (e.target.innerText == "Skill") {
+      document
+        .querySelector("#skill")
+        .scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    if (e.target.innerText == "Project") {
+      document
+        .querySelector("#project")
+        .scrollIntoView({ behavior: "smooth", top: 0 });
+    }
+    if (e.target.innerText == "Contact") {
+      document
+        .querySelector(".contact")
+        .scrollIntoView({ behavior: "smooth", top: 0 });
+    }
+  });
+});
+
 //經歷表上的<a>
 //第一個作品
 document.querySelector("#project_1").addEventListener("click", (e) => {
@@ -28,8 +65,8 @@ document.querySelector("#project_1").addEventListener("click", (e) => {
       document.querySelector("#project_height_1").style.animation = "";
     });
 });
-//第二個作品
 
+//第二個作品
 document.querySelector("#project_2").addEventListener("click", (e) => {
   e.preventDefault();
   document
@@ -76,6 +113,13 @@ function checkBoxs() {
   wellcomeBg.style.transform = `translateY(${-+window.pageYOffset / 2}px)`;
 
   //回到最上icon
+  goToTop.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
   if (pageYOffset < 200) {
     goToTop.style.opacity = 0;
     myNav.style.boxShadow = "";
