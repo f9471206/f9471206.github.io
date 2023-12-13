@@ -10,7 +10,8 @@ let jsScrolls = document.querySelectorAll(".jsScroll");
 let nav_links = document.querySelectorAll(".nav_link");
 
 document.querySelector("#miniBar").addEventListener("click", (e) => {
-  checkNav();
+  e.preventDefault();
+  document.querySelector("nav").classList.toggle("close_nav");
 });
 
 nav_links.forEach((nav_link) => {
@@ -81,26 +82,16 @@ document.querySelector("#project_2").addEventListener("click", (e) => {
     });
 });
 
-function checkNav() {
-  if (document.querySelector("nav").classList.contains("close_nav")) {
-    document.querySelector("nav").classList.remove("close_nav");
-  } else {
-    document.querySelector("nav").classList.add("close_nav");
-  }
-}
-
 //頁面位子決定 nav class active
-let navID = "home";
-window.addEventListener("scroll", checkBoxs);
-checkBoxs();
-function checkBoxs() {
+let navID = "Home";
+window.addEventListener("scroll", () => {
   jsScrolls.forEach((jsScroll) => {
     if (jsScroll.getBoundingClientRect().top < (window.innerHeight / 5) * 2) {
       navID = jsScroll.id;
     }
   });
   nav_links.forEach((nav_link) => {
-    if (nav_link.href.includes(navID)) {
+    if (nav_link.innerText.toLowerCase().includes(navID)) {
       document.querySelector("nav").classList.add("close_nav");
       document.querySelector(".active").classList.remove("active");
       nav_link.classList.add("active");
@@ -199,4 +190,4 @@ function checkBoxs() {
       icon.classList.remove("show_icon");
     }
   });
-}
+});
