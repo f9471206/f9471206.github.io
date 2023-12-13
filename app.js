@@ -9,11 +9,13 @@ let wellcomeBg = document.querySelector("#wellcomeBg");
 let jsScrolls = document.querySelectorAll(".jsScroll");
 let nav_links = document.querySelectorAll(".nav_link");
 
+//手機頁面 開關 nav
 document.querySelector("#miniBar").addEventListener("click", (e) => {
   e.preventDefault();
   document.querySelector("nav").classList.toggle("close_nav");
 });
 
+//nav 點選後移動到該位子
 nav_links.forEach((nav_link) => {
   nav_link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -51,7 +53,7 @@ nav_links.forEach((nav_link) => {
   });
 });
 
-//經歷表上的<a>
+//經歷表上點選作品 移動到該作品
 //第一個作品
 document.querySelector("#project_1").addEventListener("click", (e) => {
   e.preventDefault();
@@ -82,7 +84,8 @@ document.querySelector("#project_2").addEventListener("click", (e) => {
     });
 });
 
-//頁面位子決定 nav class active
+//頁面位子決定 nav  class ".active"
+//預設 Home
 let navID = "Home";
 window.addEventListener("scroll", () => {
   jsScrolls.forEach((jsScroll) => {
@@ -99,9 +102,9 @@ window.addEventListener("scroll", () => {
   });
 
   //歡迎圖
-  wellcomeBg.style.opacity = 1 - window.pageYOffset / 800;
-  wellcomeBg.style.top = +window.pageYOffset + "px";
-  wellcomeBg.style.transform = `translateY(${-+window.pageYOffset / 2}px)`;
+  wellcomeBg.style.opacity = 1 - window.scrollY / 800;
+  wellcomeBg.style.top = +window.scrollY + "px";
+  wellcomeBg.style.transform = `translateY(${-+window.scrollY / 2}px)`;
 
   //回到最上icon
   goToTop.addEventListener("click", (e) => {
@@ -111,7 +114,7 @@ window.addEventListener("scroll", () => {
       behavior: "smooth",
     });
   });
-  if (pageYOffset < 200) {
+  if (scrollY < 200) {
     goToTop.style.opacity = 0;
     myNav.style.boxShadow = "";
     myNav.style.backgroundColor = "";
@@ -130,7 +133,7 @@ window.addEventListener("scroll", () => {
   }
 
   let checkHeight = (window.innerHeight / 5) * 4;
-  //標題
+  //標題 淡出
   h1Title.forEach((title) => {
     let titleTop = title.getBoundingClientRect().top;
     if (titleTop < checkHeight) {
@@ -140,7 +143,7 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  //經歷的
+  //經歷 淡出
   boxs.forEach((box) => {
     let boxTop = box.getBoundingClientRect().top;
     let titleYear = box.children[0];
@@ -153,7 +156,7 @@ window.addEventListener("scroll", () => {
       content.classList.remove("scrollShow");
     }
   });
-  // skill
+  // skill 淡出
   skillList.forEach((item) => {
     let img = item.children[0];
     let title = item.children[1];
@@ -167,7 +170,7 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  //作品
+  //作品 淡出
   projects.forEach((item) => {
     let itemTop = item.getBoundingClientRect().top;
     let img = item.children[0];
@@ -181,7 +184,7 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  //聯絡ICON
+  //聯絡ICON 淡出
   contacts.forEach((icon) => {
     let iconTop = icon.getBoundingClientRect().top;
     if (iconTop < checkHeight) {
